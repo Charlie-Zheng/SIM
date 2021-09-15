@@ -79,14 +79,15 @@ public class WeaponDatabase {
 
 	public static void initSpears() {
 		spears.clear();
-		spears.add(new Weapon("Dragon's Bane\t\tR5", 454, EM, 221).addDMG(0.36f));
-		spears.add(new Weapon("The Catch\t\tR5", 510, ER, 0.459f).add(burstDMG, 0.32f).add(burstCrit, 0.12f));
+//		spears.add(new Weapon("Dragon's Bane\t\tR5", 454, EM, 221).addDMG(0.36f));
+//		spears.add(new Weapon("The Catch\t\tR5", 510, ER, 0.459f).add(burstDMG, 0.32f).add(burstCrit, 0.12f));
 		spears.add(new Weapon("Skyward Spine\tR1", 674, ER, 0.368f).addCR(0.08f));
-		spears.add(new Weapon("Death Match\tR1", 454, CR, 0.368f).addPAtk(0.16));
-		spears.add(new Weapon("Homa\t\tR1", 608, Weapon.CD, 0.662f).add(pHP, 0.2).addCustomMod(homaR1));
-		spears.add(new Weapon("Engulfing Storm\tR1", 608, ER, 0.551f).addER(0.3f).addCustomMod(LawnmowerR1));
-		spears.add(new Weapon("PJWS\tR1", 674, CR, 0.221f).addPAtk(0.032 * 3));
-		spears.add(new Weapon("Favonius Lance\tR5", 565, ER,0.306f));
+//		spears.add(new Weapon("Death Match\tR1", 454, CR, 0.368f).addPAtk(0.16));
+//		spears.add(new Weapon("Homa\t\tR1", 608, Weapon.CD, 0.662f).add(pHP, 0.2).addCustomMod(homaR1));
+//		spears.add(new Weapon("Engulfing Storm\tR1", 608, ER, 0.551f).addER(0.3f).addCustomMod(LawnmowerR1));
+//		spears.add(new Weapon("PJWS\tR1", 674, CR, 0.221f).addPAtk(0.032 * 3));
+//		spears.add(new Weapon("<REDACTED>\tR1", 620, pATK,0.138f).add(burstDMG, 0.372));
+//		spears.add(new Weapon("<REDACTED>\tR5", 620, pATK,0.138f).add(burstDMG, 0.372*2));
 //		spears.add(new Weapon("Kitain\tR1", 565, EM,110).add(skillDMG, 0.12));
 		for (Weapon spear: spears) {
 //			spear.name += "\t1 stack 4CWF";

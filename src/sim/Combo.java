@@ -62,22 +62,15 @@ public class Combo {
 				n4 = .7524f + .7393f + .90520f + (.5195f + .521f) + resolve * resolve_ratio1 * 5,
 				n1 = .7524f + resolve * resolve_ratio1, ca = 1.036f + 1.2506f + resolve * resolve_ratio1 * 2;
 		hits.clear();
-		//		hits.add(new Hit(e, 1.5f, 0f).addTags(skill, pyro).setTimes(3).setBuff(fATK, 0.000123).setBuff(pATK, 0.93f)
-		//				.setBuff(EM, 150)); 
-		//		hits.add(new Hit(q1, 1.5f, 0f).addTags(burst, pyro).setBuff(fATK, 0.000123).setBuff(pATK, 0.93f).setBuff(EM, 150));
-		//		hits.add(new Hit(q2).addTags(burst, pyro).setBuff(fATK, 0.000123).setBuff(pATK, 0.93f).setBuff(EM, 150));
-		//		hits.add(new Hit(q3).addTags(burst, pyro).setBuff(fATK, 0.000123).setBuff(pATK, 0.93f).setBuff(EM, 150));
-		//		hits.add(new Hit(qSpin, 1.5f, 0f).addTags(burst, pyro).setTimes(12).setBuff(fATK, 0.000123).setBuff(pATK, 0.93f)
-		//				.setBuff(EM, 150));
-		hits.add(new Hit(e).addTags(electro, skill).setBuff(fATK, 0.000123).setBuff(pATK, 0.45));
-		hits.add(new Hit(e_proc).addTags(electro, skill).setTimes(7).setBuff(fATK, 0.000123).setBuff(pATK, 0.45));
+		hits.add(new Hit(e).addTags(electro, skill).setBuff(fATK, 915).setBuff(pATK, 0.45));
+		hits.add(new Hit(e_proc).addTags(electro, skill).setTimes(7).setBuff(fATK, 915).setBuff(pATK, 0.45));
 		hits.add(new Hit(e_proc).addTags(electro, skill).setTimes(7).setBuff(pATK, 0.25));
 		hits.add(
-				new Hit(q).addTags(electro, burst).setBuff(fATK, 0.000123).setBuff(pATK, 0.45).setBuff(burstDMG, 0.27));
-		hits.add(new Hit(n5).addTags(electro, burst).setTimes(2).setBuff(fATK, 0.000123).setBuff(pATK, 0.45)
+				new Hit(q).addTags(electro, burst).setBuff(fATK, 915).setBuff(pATK, 0.45).setBuff(burstDMG, 0.27));
+		hits.add(new Hit(n5).addTags(electro, burst).setTimes(3).setBuff(fATK, 915).setBuff(pATK, 0.45)
 				.setBuff(burstDMG, 0.27));
-		hits.add(new Hit(n4).addTags(electro, burst).setBuff(fATK, 0.000123).setBuff(pATK, 0.45).setBuff(burstDMG,
-				0.27));
+//		hits.add(new Hit(n4).addTags(electro, burst).setBuff(fATK, 915).setBuff(pATK, 0.45).setBuff(burstDMG,
+//				0.27));
 		transformatives.clear();
 		transformatives.add(new Hit(0.0f, 0.0f, 4f).addTags(pyro).setTimes(3));
 	}

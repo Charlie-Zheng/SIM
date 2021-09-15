@@ -73,7 +73,7 @@ public class SIM {
 		}
 
 		subsToCalc.parallelStream().forEach(i -> {
-			talentDamage(i, new int[] { pATK, ER, EM }, new int[] { CR, CD }, new int[] { DMG }, 1.80f);
+			talentDamage(i, new int[] { pATK, ER, EM }, new int[] { CR, CD }, new int[] { pATK }, 1.0f);
 		});
 		System.out.print("Total subs,");
 		for (int subCount : subsToCalc) {
@@ -104,31 +104,31 @@ public class SIM {
 			float ERNeeded) {
 
 		//		====================== XIANGLING ======================
-				double level = 90;
-				float[] charBase = new float[numTypeStats];
-				charBase[baseATK] = 225;
-				charBase[baseHP] = 10875;
-				charBase[CR] = 0.05f;
-				charBase[CD] = 0.50f;
-				charBase[ER] = 1f;
-				charBase[EM] = 96f;
-				charBase[eRes] = 0.1f;
-				CustomStatMod charMod = null;
+//				double level = 90;
+//				float[] charBase = new float[numTypeStats];
+//				charBase[baseATK] = 225;
+//				charBase[baseHP] = 10875;
+//				charBase[CR] = 0.05f;
+//				charBase[CD] = 0.50f;
+//				charBase[ER] = 1f;
+//				charBase[EM] = 96f;
+//				charBase[eRes] = 0.1f;
+//				CustomStatMod charMod = null;
 		//		====================== Raiden ======================
-//		double level = 90;
-//		float[] charBase = new float[numTypeStats];
-//		charBase[baseATK] = 337;
-//		charBase[baseHP] = 12907;
-//		charBase[CR] = 0.05f;
-//		charBase[CD] = 0.50f;
-//		charBase[ER] = 1.32f;
-//		charBase[eRes] = 0.1f;
-//		CustomStatMod charMod = (stat) -> {
-//			stat[electroDMG] += (stat[ER] - 1) * 0.4f;
-//		};
+		double level = 90;
+		float[] charBase = new float[numTypeStats];
+		charBase[baseATK] = 337;
+		charBase[baseHP] = 12907;
+		charBase[CR] = 0.05f;
+		charBase[CD] = 0.50f;
+		charBase[ER] = 1.32f;
+		charBase[eRes] = 0.1f;
+		CustomStatMod charMod = (stat) -> {
+			stat[electroDMG] += (stat[ER] - 1) * 0.4f;
+		};
 
 		Combo combo = new Combo();
-		combo.XLCombo();
+		combo.RaidenCombo();
 
 		Integer[] subs = { pATK, ER, CR, CD, EM };
 		int[] requiredSubs = new int[numTypeStats];
