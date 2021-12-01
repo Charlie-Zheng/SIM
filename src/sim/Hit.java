@@ -109,8 +109,9 @@ public class Hit {
 			if (damageTags[cryo]) {
 				stat[DMG] += stat[cryoDMG];
 			}
-
+			
 			float raw = rawDamage(stat[baseATK] * (1 + stat[pATK]) + stat[fATK], stat[CR], stat[CD], stat[DMG]);
+		
 			if (reactsMult < 0.00001) {
 				total += MV * raw * 0.5 * (1 - (stat[eRes] < 0 ? stat[eRes] / 2 : stat[eRes]));
 			} else {
@@ -120,7 +121,6 @@ public class Hit {
 			if (reactsTrans != 0) {
 				total += reactsTrans * transReactEM_New(90, stat[EM], stat[transReactionDMG]) * (1 - (stat[eRes] < 0 ? stat[eRes] / 2 : stat[eRes]));
 			}
-
 			return total * times;
 		}
 	}

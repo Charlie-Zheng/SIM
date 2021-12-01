@@ -30,7 +30,7 @@ public class SIM {
 			"DMG%", "CR", "CD", "ER", "anemoDMG", "geoDMG", "electroDMG", "hydroDMG", "pyroDMG", "cryoDMG", "skilDMG",
 			"burstDMG", "skillCrit", "burstCrit", "MultReactionDMG", "TransReactionDMG", "Enemy Res" };
 
-	public final static int SUBS_PER_NON_STAT_MAIN = 3;
+	public final static int SUBS_PER_NON_STAT_MAIN = 2;
 
 	/**
 	 * @param args
@@ -47,34 +47,60 @@ public class SIM {
 		mainStats[CR] = 0.311;
 		mainStats[CD] = 0.622;
 
+//		Average subs
+//		Old calc used perfect subs
 		subStats[pHP] = 0.04955;
+		subStats[HP] = 253.94;
 		subStats[pATK] = 0.04955;
-		subStats[fATK] = 19.675;
+		subStats[fATK] = 16.54;
 		subStats[CR] = 0.03305;
 		subStats[CD] = 0.06605;
 		subStats[EM] = 19.815;
 		subStats[ER] = 0.05505;
-
 		double startTime = System.currentTimeMillis();
-		//				System.out.println("subs invested\ttotal damage");
-		//		for (int i = 25; i <= 40; i += 5) {
-		//			talentDamage(i, new int[] { pATK }, new int[] { CR, CD }, new int[] { DMG });
-		//		}
-		//		System.out.println("-------------------");
-		//		System.out.println("subs invested\ttotal damage");
 
+//		Now uses the KQM substat distribution standards instead of allowing free distribution of all stats. (12 EM subs on only flower+feather in EM/EM/EM was pretty unrealistic)
+//		This is the number of "fluid" subs
 		ArrayList<Integer> subsToCalc = new ArrayList<Integer>();
-		for (int i = 0; i <= 25; i += 1) {
+		for (int i = 20; i <= 20; i += 1) {
 			subsToCalc.add(i);
 		}
-		WeaponDatabase.initSpears();
-		for (Weapon spear : WeaponDatabase.spears) {
-			data.put(spear.name, new double[46]);
+		WeaponDatabase.initBows();
+		for (Weapon bow : WeaponDatabase.bows) {
+			data.put(bow.name, new double[46]);
 		}
 
+//		// ADC
+//		subsToCalc.parallelStream().forEach(i -> {
+//			talentDamage(i, new int[] { pATK, ER }, new int[] { CR, CD }, new int[] { pATK, DMG }, 1.6f);
+//		});
+		
+		
+		// EM
 		subsToCalc.parallelStream().forEach(i -> {
-			talentDamage(i, new int[] { pATK, ER, EM }, new int[] { CR, CD }, new int[] { pATK }, 1.0f);
+			talentDamage(i, new int[] { ER, EM}, new int[] { EM, }, new int[] { EM }, 1.6f);
 		});
+		
+//		For calcing the er reqs thing
+//		StringBuffer x = new StringBuffer();
+//		StringBuffer y = new StringBuffer();
+//		for( double i=1; i < 2.4; i+= 0.05 ) {
+//			talentDamage(20, new int[] { pATK, ER, EM }, new int[] { CR, CD }, new int[] { pATK, DMG }, (float)i);
+//			String[] keys = data.keySet().toArray(new String[] {});
+//			Arrays.sort(keys);
+//			for (String key : keys) {
+//				double[] damage = data.get(key);
+//				System.out.print(key.replace('\t', ' ').replace("  ", " ").replace("\n", "") + ",");
+//				for (int subCount : subsToCalc) {
+//					x.append((int)(i*100+0.0001) + ", ");
+//					y.append((damage[subCount] != 0 ? damage[subCount] : "") + ",");
+//				}
+//				System.out.println();
+//			}
+//		}
+//		System.out.println(x);
+//		System.out.println(y);
+		
 		System.out.print("Total subs,");
 		for (int subCount : subsToCalc) {
 			System.out.print(subCount + ",");
@@ -102,38 +128,58 @@ public class SIM {
 
 	public static void talentDamage(int totalSubs, int[] sandStats, int[] circletStats, int[] gobletStats,
 			float ERNeeded) {
-
-		//		====================== XIANGLING ======================
-//				double level = 90;
-//				float[] charBase = new float[numTypeStats];
-//				charBase[baseATK] = 225;
-//				charBase[baseHP] = 10875;
-//				charBase[CR] = 0.05f;
-//				charBase[CD] = 0.50f;
-//				charBase[ER] = 1f;
-//				charBase[EM] = 96f;
-//				charBase[eRes] = 0.1f;
-//				CustomStatMod charMod = null;
-		//		====================== Raiden ======================
+////		====================== Xingqiu ======================
+//		double level = 90;
+//		float[] charBase = new float[numTypeStats];
+//		charBase[baseATK] = 202;
+//		charBase[baseHP] = 10222;
+//		charBase[CR] = 0.05f;
+//		charBase[CD] = 0.50f;
+//		charBase[ER] = 1f;
+//		charBase[hydroDMG] = 0.2f;
+//		charBase[pATK] = 0.24f+0.25f;
+//		charBase[eRes] = 0.1f;
+//		CustomStatMod charMod = null;
+//		====================== XIANGLING ======================
+//		double level = 90;
+//		float[] charBase = new float[numTypeStats];
+//		charBase[baseATK] = 225;
+//		charBase[baseHP] = 10875;
+//		charBase[CR] = 0.05f;
+//		charBase[CD] = 0.50f;
+//		charBase[ER] = 1f;
+//		charBase[EM] = 96f;
+//		charBase[eRes] = 0.1f;
+//		CustomStatMod charMod = null;
+//		====================== Raiden ======================
+//		double level = 90;
+//		float[] charBase = new float[numTypeStats];
+//		charBase[baseATK] = 337;
+//		charBase[baseHP] = 12907;
+//		charBase[CR] = 0.05f;
+//		charBase[CD] = 0.50f;
+//		charBase[ER] = 1.32f;
+//		charBase[eRes] = 0.1f;
+//		CustomStatMod charMod = (stat) -> {
+//			stat[electroDMG] += (stat[ER] - 1) * 0.4f;
+//		};
+//		====================== Venti ======================
 		double level = 90;
 		float[] charBase = new float[numTypeStats];
-		charBase[baseATK] = 337;
-		charBase[baseHP] = 12907;
+		charBase[baseATK] = 263;
+		charBase[baseHP] = 10531;
 		charBase[CR] = 0.05f;
 		charBase[CD] = 0.50f;
 		charBase[ER] = 1.32f;
 		charBase[eRes] = 0.1f;
-		CustomStatMod charMod = (stat) -> {
-			stat[electroDMG] += (stat[ER] - 1) * 0.4f;
-		};
-
+		CustomStatMod charMod = null;
+		
+		
 		Combo combo = new Combo();
-		combo.RaidenCombo();
+		combo.VentiCombo();
 
 		Integer[] subs = { pATK, ER, CR, CD, EM };
 		int[] requiredSubs = new int[numTypeStats];
-//		requiredSubs[pATK] = 4;
-//		requiredSubs[EM] = 4;
 		int flower = HP;
 		int feather = fATK;
 
@@ -141,10 +187,10 @@ public class SIM {
 
 		//		WeaponDatabase.initClaymores();
 		StringBuffer output = new StringBuffer();
-		for (Weapon spears : WeaponDatabase.spears) {
+		for (Weapon bows : WeaponDatabase.bows) {
 			float[] startingStats = Arrays.copyOf(charBase, numTypeStats);
 			for (int i = 0; i < numTypeStats; i++) {
-				startingStats[i] += spears.stats[i];
+				startingStats[i] += bows.stats[i];
 			}
 
 			double maxDamage = 0;
@@ -230,8 +276,9 @@ public class SIM {
 							for (int i = 0; i < numTypeStats; i++) {
 								stat[i] += numSubs[i] * subStats[i];
 							}
-
-							spears.mod(stat);
+							
+							
+							bows.mod(stat);
 							if (charMod != null) {
 								charMod.modStat(stat);
 							}
@@ -256,7 +303,7 @@ public class SIM {
 
 				}
 			}
-			System.out.println(spears.name);
+			System.out.println(bows.name);
 			System.out.println("Total liquid subs:\t" + totalSubs);
 			System.out.print("Total Damage:\t" + maxDamage);
 			System.out.print("\tTalent damage:\t" + (maxDamage - reactionDMG));
@@ -275,7 +322,7 @@ public class SIM {
 				System.out.println("\t" + h.calcDamage(maxStats) / h.times);
 			}
 			System.out.println("----------------------------------------");
-			data.get(spears.name)[totalSubs] = maxDamage;
+			data.get(bows.name)[totalSubs] = maxDamage;
 
 		}
 

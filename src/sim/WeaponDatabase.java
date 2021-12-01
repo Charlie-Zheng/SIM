@@ -23,7 +23,7 @@ public class WeaponDatabase {
 	public static ArrayList<Weapon> bows = new ArrayList<Weapon>();
 	public static ArrayList<Weapon> claymores = new ArrayList<Weapon>();
 	public static ArrayList<Weapon> spears = new ArrayList<Weapon>();
-
+	public static ArrayList<Weapon> swords = new ArrayList<Weapon>();
 	public static void init() {
 		initBows();
 	}
@@ -68,7 +68,7 @@ public class WeaponDatabase {
 	};
 
 	public static CustomStatMod EoSF = (stat) -> {
-		stat[burstDMG] += Math.min(stat[ER] * 0.2, 0.75f);
+		stat[burstDMG] += Math.min(stat[ER] * 0.25, 0.75f);
 	};
 	public static CustomStatMod LawnmowerR1 = (stat) -> {
 		stat[pATK] += Math.min((stat[ER] - 1) * 0.28, 0.80);
@@ -76,7 +76,9 @@ public class WeaponDatabase {
 	public static CustomStatMod LawnmowerR5 = (stat) -> {
 		stat[pATK] += Math.min((stat[ER] - 1) * 0.56, 1.20);
 	};
-
+	public static CustomStatMod pjcR1 = (stat) -> {
+		stat[fATK] += (stat[baseHP] * (1 + stat[pHP]) + stat[HP]) * 0.012;
+	};
 	public static void initSpears() {
 		spears.clear();
 //		spears.add(new Weapon("Dragon's Bane\t\tR5", 454, EM, 221).addDMG(0.36f));
@@ -105,5 +107,11 @@ public class WeaponDatabase {
 		//		spears.add(new Weapon("Dragon's Bane\tR5\t2NO2WT", 454, EM, 221).addDMG(0.36f).add(burstDMG, 0.2).add(EM, 80));
 		//		spears.add(new Weapon("Dragon's Bane\tR5\t2CWF2WT", 454, EM, 221).addDMG(0.36f).add(pyroDMG, 0.15).add(EM, 80));
 		//		spears.add(new Weapon("Dragon's Bane\tR5\tNo Sets", 454, EM, 221).addDMG(0.36f));
+	}
+	
+	public static void initSword() {
+		swords.clear();
+		swords.add(new Weapon("PJC R1 4EoSF", 542, CR, 0.441f).addPHP(0.2f).addER(0.2f).addCustomMod(EoSF).addCustomMod(pjcR1));
+//		swords.add(new Weapon("PJC R1", 542, CR, 0.441f).addPHP(0.2f).addCustomMod(pjcR1).add(hydroDMG, 0.15f).add(burstDMG, 0.2f));
 	}
 }

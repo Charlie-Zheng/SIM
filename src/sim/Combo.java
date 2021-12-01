@@ -35,21 +35,24 @@ public class Combo {
 		//		hits.add(new Hit(q3).addTags(burst, pyro).setBuff(fATK, 0.000123).setBuff(pATK, 0.93f).setBuff(EM, 150));
 		//		hits.add(new Hit(qSpin, 1.5f, 0f).addTags(burst, pyro).setTimes(12).setBuff(fATK, 0.000123).setBuff(pATK, 0.93f)
 		//				.setBuff(EM, 150));
-		hits.add(new Hit(e, 1.5f, 0.0f).addTags(skill, pyro).setTimes(3).setBuff(fATK, 915).setBuff(pATK, 0.93f)
-				.setBuff(eRes, -0.55f).setBuff(EM, 150));
-		hits.add(new Hit(e, 0.0f, 0.0f).addTags(skill, pyro).setTimes(1).setBuff(fATK, 915).setBuff(pATK, 0.93f)
-				.setBuff(eRes, -0.55f).setBuff(EM, 150));
+		hits.add(new Hit(e, 1.5f, 0.0f).addTags(skill, pyro).setTimes(3)
+				/* .setBuff(fATK, 915).setBuff(pATK, 0.93f) */.setBuff(eRes, -0.55f).setBuff(EM, 150));
+		hits.add(new Hit(e, 0.0f, 0.0f).addTags(skill, pyro).setTimes(1)
+				/* .setBuff(fATK, 915).setBuff(pATK, 0.93f) */.setBuff(eRes, -0.55f).setBuff(EM, 150));
 
-		hits.add(new Hit(q1).addTags(burst, pyro).setBuff(fATK, 915).setBuff(pATK, 0.93f).setBuff(eRes, -0.55f).setBuff(EM, 150));
-		hits.add(new Hit(q2).addTags(burst, pyro).setBuff(fATK, 915).setBuff(pATK, 0.93f).setBuff(eRes, -0.55f).setBuff(EM, 150));
-		hits.add(new Hit(q3).addTags(burst, pyro).setBuff(fATK, 915).setBuff(pATK, 0.93f).setBuff(eRes, -0.55f).setBuff(EM, 150));
-		hits.add(new Hit(qSpin, 1.5f, 0f).addTags(burst, pyro).setTimes(10).setBuff(fATK, 915).setBuff(pATK, 0.93f)
-				.setBuff(eRes, -0.55f).setBuff(EM, 150));
-		hits.add(new Hit(qSpin, 0f, 0f).addTags(burst, pyro).setTimes(2).setBuff(fATK, 915).setBuff(pATK, 0.93f)
-				.setBuff(eRes, -0.55f).setBuff(EM, 150));
+		hits.add(new Hit(q1).addTags(burst, pyro)
+				/* .setBuff(fATK, 915).setBuff(pATK, 0.93f) */.setBuff(eRes, -0.55f).setBuff(EM, 150));
+		hits.add(new Hit(q2).addTags(burst, pyro)
+				/* .setBuff(fATK, 915).setBuff(pATK, 0.93f) */.setBuff(eRes, -0.55f).setBuff(EM, 150));
+		hits.add(new Hit(q3).addTags(burst, pyro)
+				/* .setBuff(fATK, 915).setBuff(pATK, 0.93f) */.setBuff(eRes, -0.55f).setBuff(EM, 150));
+		hits.add(new Hit(qSpin, 1.5f, 0f).addTags(burst, pyro).setTimes(10)
+				/* .setBuff(fATK, 915).setBuff(pATK, 0.93f) */.setBuff(eRes, -0.55f).setBuff(EM, 150));
+		hits.add(new Hit(qSpin, 0f, 0f).addTags(burst, pyro).setTimes(2)
+				/* .setBuff(fATK, 915).setBuff(pATK, 0.93f) */.setBuff(eRes, -0.55f).setBuff(EM, 150));
 
 		transformatives.clear();
-//		transformatives.add(new Hit(0.0f, 0.0f, 4f).addTags(pyro).setBuff(eRes, -0.55f).setTimes(7));
+		transformatives.add(new Hit(0.0f, 0.0f, 4f).addTags(pyro).setBuff(eRes, -0.55f).setTimes(10));
 	}
 
 	public void RaidenCombo() {
@@ -74,7 +77,22 @@ public class Combo {
 		transformatives.clear();
 		transformatives.add(new Hit(0.0f, 0.0f, 4f).addTags(pyro).setTimes(3));
 	}
-
+	public void XQCombo() {
+		hits.clear();
+		hits.add(new Hit(1.1533f).addTags(hydro, burst).setBuff(eRes, -0.55f));
+		transformatives.clear();
+	}
+	
+	
+	public void VentiCombo() {
+		hits.clear();
+		hits.add(new Hit(4.968f).addTags(anemo,skill).setTimes(2));
+		hits.add(new Hit(0.6768f).addTags(anemo, burst).setTimes(20));
+		hits.add(new Hit(0.3384f).addTags(cryo, burst).setBuff(eRes, -0.4f).setTimes(16));
+		
+		transformatives.clear();
+		transformatives.add(new Hit(0f,0f,1.2f).setBuff(eRes, -0.4f).setTimes(18));
+	}
 	public float calcDamage(float[] stat) {
 		float total = 0;
 		for (Hit h : hits) {
