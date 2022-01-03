@@ -76,16 +76,16 @@ public class SIM {
 			data.put(bow.name, new double[46]);
 		}
 
-		// ADC
-		subsToCalc.parallelStream().forEach(i -> {
-			talentDamage(i, new int[] { pATK, ER }, new int[] { CR, CD }, new int[] { pATK, DMG }, 1.0f);
-		});
+//		// ADC, remeber to prevent the sub stat optimizer from picking EM subs
+//		subsToCalc.parallelStream().forEach(i -> {
+//			talentDamage(i, new int[] { pATK, ER }, new int[] { CR, CD }, new int[] { pATK, DMG }, 1.0f);
+//		});
 		
 		
 //		// EM
-//		subsToCalc.parallelStream().forEach(i -> {
-//			talentDamage(i, new int[] { ER, EM}, new int[] { EM, }, new int[] { EM }, 1.0f);
-//		});
+		subsToCalc.parallelStream().forEach(i -> {
+			talentDamage(i, new int[] { ER, EM}, new int[] { EM, }, new int[] { EM }, 1.0f);
+		});
 		
 //		For calcing the er reqs thing
 //		StringBuffer x = new StringBuffer();
@@ -185,7 +185,7 @@ public class SIM {
 		Combo combo = new Combo();
 		combo.VentiCombo();
 
-		Integer[] subs = { pATK, ER, CR, CD, fATK };
+		Integer[] subs = { pATK, ER, CR, CD, EM };
 		int[] requiredSubs = new int[numTypeStats];
 		int flower = HP;
 		int feather = fATK;
