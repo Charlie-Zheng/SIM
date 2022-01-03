@@ -30,27 +30,31 @@ public class WeaponDatabase {
 
 	public static void initBows() {
 		bows.clear();
-		bows.add(new Weapon("Stringless\t\tR1", 510, EM, 165).addDMG(0.4f));
-		bows.add(new Weapon("Stringless\t\tR5", 510, EM, 165).addDMG(0.8f));
-		bows.add(new Weapon("Prototype Crescent\tR1\tUnactivated", 510, pATK, 0.3f));
+		bows.add(new Weapon("Stringless\t\tR1", 510, EM, 165).add(burstDMG,0.24f).add(skillDMG,0.24f));
+		bows.add(new Weapon("Stringless\t\tR5", 510, EM, 165).add(burstDMG,0.48f).add(skillDMG,0.48f));
+		bows.add(new Weapon("Prototype Crescent\tR1\tUnactivated", 510, pATK, 0.413f));
 		//		bows.add(new Weapon("Prototype Crescent\tR1\tActivated", 510, pATK, 0.3f).addPAtk(0.6f));
 		//		bows.add(new Weapon("Prototype Crescent\tR3\tActivated", 510, pATK, 0.3f).addPAtk(0.4f));
 		//		bows.add(new Weapon("Prototype Crescent\tR5\tActivated", 510, pATK, 0.3f).addPAtk(0.2f));
 		//		bows.add(new Weapon("Alley Hunter\t\tR1\t0/10 Stack", 565, pATK, 0.6f));
-		bows.add(new Weapon("Alley Hunter\t\tR1", 565, pATK, 0.6f).addDMG(0.2f));
-		bows.add(new Weapon("Alley Hunter\t\tR5", 565, pATK, 0.6f).addDMG(0.4f));
-		bows.add(new Weapon("Skyward Harp\t\tR1", 674, CR, 0.1f).addCD(0.2f));
+		bows.add(new Weapon("Alley Hunter\t\tR1", 565, pATK, 0.276f).addDMG(0.2f));
+		bows.add(new Weapon("Alley Hunter\t\tR5", 565, pATK, 0.276f).addDMG(0.4f));
+		bows.add(new Weapon("Skyward Harp\t\tR1", 674, CR, 0.221f).addCD(0.2f));
 		bows.add(new Weapon("Raven Bow\t\tR5\tActivated", 448, EM, 94).addDMG(0.4f));
 		//		bows.add(new Weapon("Raven Bow Base 38\tR5\tActivated", 354, EM, 188).addDMG(0.4f));
 		//		bows.add(new Weapon("Old Alley Hunter\tR1\t5/5 Stack", 454, CR, 0.8f).addCD(0.2f).addPAtk(0.2f));
 		//		bows.add(new Weapon("Old Alley Hunter\tR5\t5/5 Stack", 454, CR, 0.8f).addCD(0.4f).addPAtk(0.4f));
 		//		bows.add(new Weapon("Rust\t\tR5\tActivated", 510, pATK, 0.3f).addDMG(0.8f));
-		bows.add(new Weapon("Windblume Ode\t\tR5", 510, EM, 165).addPAtk(0.2f));
+		bows.add(new Weapon("Windblume Ode\t\tR5", 510, EM, 165).addPAtk(0.32f));
 		bows.add(new Weapon("Favonius Warbow", 510));
 		bows.add(new Weapon("Elegy of the End\tR1\t50% Uptime", 608).addEM(60).addEM(50));
 		bows.add(new Weapon("Elegy of the End\tR5\t50% Uptime", 608).addEM(120).addEM(100));
-		//		bows.add(new Weapon("Thundering Pulse\t\tR1", 608, CD, 0.2f).addPAtk(0.2f));
-		bows.add(new Weapon("Viridescent Hunt\t\tR1 No Passive", 510, CR, 0.6f));
+		bows.add(new Weapon("Thundering Pulse\t\tR1", 608, CD, 0.662f).addPAtk(0.2f));
+		bows.add(new Weapon("Viridescent Hunt\t\tR1 No Passive", 510, CR, 0.276f));
+		bows.add(new Weapon("Mouun's Moon\t\tR1 36 BurstDMG%", 565, pATK, 0.276f).add(burstDMG, 0.36));
+		bows.add(new Weapon("Mouun's Moon\t\tR5 72 BurstDMG%", 565, pATK, 0.276f).add(burstDMG, 0.72));
+		bows.add(new Weapon("Polar Star\t\tR1 1 stack", 608, CR, 0.331f).add(burstDMG, 0.12f).add(skillDMG, 0.12f).add(pATK, 0.10f));
+		bows.add(new Weapon("Polar Star\t\tR1 4 stack", 608, CR, 0.331f).add(burstDMG, 0.12f).add(skillDMG, 0.12f).add(pATK, 0.48f));
 	}
 
 	public static void initClaymores() {

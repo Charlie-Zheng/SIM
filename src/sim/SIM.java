@@ -30,7 +30,7 @@ public class SIM {
 			"DMG%", "CR", "CD", "ER", "anemoDMG", "geoDMG", "electroDMG", "hydroDMG", "pyroDMG", "cryoDMG", "skilDMG",
 			"burstDMG", "skillCrit", "burstCrit", "MultReactionDMG", "TransReactionDMG", "Enemy Res" };
 
-	public final static int SUBS_PER_NON_STAT_MAIN = 2;
+	public final static int SUBS_PER_NON_STAT_MAIN = 6;
 
 	/**
 	 * @param args
@@ -57,6 +57,12 @@ public class SIM {
 		subStats[CD] = 0.06605;
 		subStats[EM] = 19.815;
 		subStats[ER] = 0.05505;
+		
+//		Converts avg to perfect subs
+		for( int i=0; i < subStats.length; i++ ) {
+			subStats[i]/=0.85;
+		}
+		
 		double startTime = System.currentTimeMillis();
 
 //		Now uses the KQM substat distribution standards instead of allowing free distribution of all stats. (12 EM subs on only flower+feather in EM/EM/EM was pretty unrealistic)
@@ -70,16 +76,16 @@ public class SIM {
 			data.put(bow.name, new double[46]);
 		}
 
-//		// ADC
-//		subsToCalc.parallelStream().forEach(i -> {
-//			talentDamage(i, new int[] { pATK, ER }, new int[] { CR, CD }, new int[] { pATK, DMG }, 1.6f);
-//		});
-		
-		
-		// EM
+		// ADC
 		subsToCalc.parallelStream().forEach(i -> {
-			talentDamage(i, new int[] { ER, EM}, new int[] { EM, }, new int[] { EM }, 1.6f);
+			talentDamage(i, new int[] { pATK, ER }, new int[] { CR, CD }, new int[] { pATK, DMG }, 1.0f);
 		});
+		
+		
+//		// EM
+//		subsToCalc.parallelStream().forEach(i -> {
+//			talentDamage(i, new int[] { ER, EM}, new int[] { EM, }, new int[] { EM }, 1.0f);
+//		});
 		
 //		For calcing the er reqs thing
 //		StringBuffer x = new StringBuffer();
@@ -171,14 +177,15 @@ public class SIM {
 		charBase[CR] = 0.05f;
 		charBase[CD] = 0.50f;
 		charBase[ER] = 1.32f;
-		charBase[eRes] = 0.1f;
+		charBase[eRes] = 0.0f;
+		charBase[transReactionDMG] = 0.6f;
 		CustomStatMod charMod = null;
 		
 		
 		Combo combo = new Combo();
 		combo.VentiCombo();
 
-		Integer[] subs = { pATK, ER, CR, CD, EM };
+		Integer[] subs = { pATK, ER, CR, CD, fATK };
 		int[] requiredSubs = new int[numTypeStats];
 		int flower = HP;
 		int feather = fATK;
@@ -233,7 +240,7 @@ public class SIM {
 						int[] prealloc = new int[numTypeStats];
 						for (int s = 0; s < numTypeStats; s++) {
 							if (subStats[s] > 0.000001) {
-								prealloc[s] += 2;
+								prealloc[s] += 0;
 							}
 
 						}
